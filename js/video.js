@@ -50,21 +50,25 @@ document.querySelector("#skip").addEventListener("click", function() {
 // mute
 // Mute/unmute the video and update the text in the button.
 document.querySelector("#mute").addEventListener("click", function() {
-	if (video.volume != 0){
-		video.volume = 0;
+	if (video.muted == false){
+		video.muted = true;
 		document.querySelector('#mute').innerHTML = "Unmute";
-		console.log(video.volume)
-	} else {
-		video.volume = 1;
+		console.log("Mute")
+	} else if (video.muted == true){
+		video.muted = false;
 		document.querySelector('#mute').innerHTML = "Mute";
-		console.log(video.volume)
+		console.log("Unmute")
 	}
 });
 
 // volume slider
 // Change the volume based on the slider and update the volume information.
 document.querySelector("#slider").addEventListener("click", function() {
-	document.querySelector("#volume").innerHTML = video.volume;
+	console.log('the current value is', video.volume)
+	video.volume = this.value / 100
+	console.log('the current value is', video.volume)
+	console.log(document.querySelector('#volume'))
+	document.querySelector('#volume').innerHTML = video.volume * 100 + '%'
 	
 });
 
